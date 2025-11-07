@@ -26,6 +26,12 @@ Book Versioning is heavily inspired by the [Semantic Versioning](https://semver.
 
 Please see [bookver.org](https://bookver.org).
 
+## About
+
+The Book Versioning specification was developed by [The Boina Press](https://theboina.org/), a small Finnish literary press, and published in 2025.
+
+Feedback is welcomed. Please use electronic mail and the address [info@bookver.org](mailto:info@bookver.org).
+
 ## License
 
 This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
