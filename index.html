@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "ISO/IEC 15445:2000//DTD HTML//EN">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Versioning 1.0.0</title>
+  <style type="text/css">
+    body {
+      margin: auto;
+      max-width: 450px;
+      padding: 1% 10%;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <hr>
+  <h1>Book Versioning 1.0.0</h1>
+  <hr>
+
+  <h2>Summary</h2>
+  <p><i>Book Versioning</i> is a versioning scheme developed to track changes between editions of published works. Given a version number MAJOR.MINOR.CORRECTION, increment the</p>
+  <ol>
+    <li>MAJOR version whenever you introduce new content that does not align with old content, making it severely outdated;</li>
+    <li>MINOR version whenever you introduce new content that aligns with old content, thus supplementing it;</li>
+    <li>CORRECTION version whenever you make editorial changes or add clarifications that do not significantly alter old content or its meaning.</li>
+  </ol>
+
+  <h2>Introduction</h2>
+  <p>Publications come in editions. Newer ones often contain corrections and new content; it is usually safe to assume edition 7 is preferred over edition 6. However, the edition number gives little information about the nature of the difference between the editions. Moreover, the definition of an edition varies a lot, resulting in much confusion, especially for the reader.</p>
+  <p>As an example, a student looking for a textbook might make do with edition 6 instead of edition 7 if the changes between the editions are minor editorial changes. If, however, edition 7 comes with major, significant changes, great consideration should go into making a decision between the editions. The word "revised" is often added to make some distinction but its practical usefulness is highly questionable.</p>
+  <p>Similarly, a treatise of a more personal nature might stay relevant in subject, but the author may have had a change of heart, wanting to revisit the topic. Such progress in thought often manifests itself in new books instead of new editions which makes recognising and following this progress much more difficult for the reader.</p>
+  <p>We propose to version publication editions in a way that allows and encourages authors to make even drastic changes to their works, while at the same time making the nature of the changes between different editions immediately evident.</p>
+  <p>This versioning scheme of publication editions is named "Book Versioning," and it is presented in detail in the subsequent section. Since this versioning scheme is easily applied to all text, the scheme itself is versioned under it.</p>
+  <p>Book Versioning is heavily inspired by the <a href="https://semver.org/">Semantic Versioning</a> scheme that is widely used in software development.</p>
+
+  <h2>Book Versioning Specification</h2>
+  <p>The key words "MUST", "MUST NOT", "SHALL", "SHOULD", "RECOMMENDED", and "MAY" in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/rfc/rfc2119">RFC 2119</a>.</p>
+  <ol>
+    <li>
+      <p>A publication using Book Versioning MUST include the version number of the edition in the title page verso, and in formats where a title page verso does not exist, the version number MUST be included in the same place the publisher information is presented.</p>
+    </li>
+    <li>
+      <p>A publication using Book Versioning MUST NOT be published without the statement "The version number of this edition is lower than that of the most recent published edition." if the statement is true at the time of publication. The statement MUST be placed near the version number of the edition.</p>
+    </li>
+    <li>
+      <p>A published edition of a publication using Book Versioning MUST NOT include any modifications to its content. Any modifications MUST be published as a new edition with a new version number.</p>
+    </li>
+    <li>
+      <p>A publication using Book Versioning SHOULD always include, within the publication, a summary of changes between the published edition and the previous one. The summary is RECOMMENDED to be presented in the preface of the publication, if it exists.</p>
+    </li>
+    <li>
+      <p>A normal version number MUST take the form X.Y.Z where X, Y, and Z are non-negative integers, and MUST NOT contain leading zeroes. X is the major version, Y is the minor version, and Z is the correction version. Each element MUST increase numerically. For instance: 1.9.0 → 1.10.0 → 1.11.0.</p>
+    </li>
+    <li>
+      <p>The first version number an edition takes SHALL be 1.0.0.</p>
+    </li>
+    <li>
+      <p>Correction version Z (x.y.Z | x > 0) MUST be incremented if the new edition introduces only editorial changes or clarifications that do not significantly alter the content of the preceding version or its meaning.</p>
+    </li>
+    <li>
+      <p>Minor version Y (x.Y.z | x > 0) MUST be incremented if the new edition introduces new content that aligns with the content of the preceding version. It MAY include correction-level changes. Correction version MUST be reset to 0 when minor version is incremented.</p>
+    </li>
+    <li>
+      <p>Major version X (X.y.z | X > 0) MUST be incremented if the new edition introduces new content that does not align with the content of the preceding version. It MAY also include minor and correction-level changes. Correction and minor versions MUST be reset to 0 when major version is incremented.</p>
+    </li>
+    <li>
+      <p>Precedence refers to how versions are compared to each other when ordered. Precedence MUST be calculated by separating the version into major, minor and correction identifiers in that order.</p>
+      <p>Precedence is determined by the first difference when comparing each of these identifiers from left to right as follows: major, minor, and correction versions are always compared numerically.</p>
+      <p>Example: 1.0.0 < 2.0.0 < 2.1.0 < 2.1.1.</p>
+    </li>
+  </ol>
+
+  <h2>FAQ</h2>
+  <h3>Why use Book Versioning?</h3>
+  <p>Book Versioning makes the differences between different editions of published works apparent. Readers benefit from the transparency, authors of evolving subjects get to make drastic changes to their texts without publishing new titles, and publishers gain a more detailed view of their editions and can market accordingly.</p>
+
+  <h3>Could you provide an example?</h3>
+  <p>Suppose you are writing a textbook on astronomy and your first edition gets published with the version number 1.0.0. Afterwards, several typos and grammatical mistakes are found and, due to great demand, a new edition with the version number 1.0.1 is published. Time passes and you wish to include findings made with the James Webb telescope. Dedicating a chapter to these findings, you present much new content and the new edition is published with the version number 1.1.0. Then, one day, a new discovery makes much of your chapter on cosmology obsolete. You get to work revising your work to match the recent findings. Since the new content does not align with the old one, you publish under the version number 2.0.0.</p>
+  <p>Due to the new major version number, readers are advised against the older editions. In traditional publishing the new edition would have been published most likely as a revised 4th edition. But the 3rd edition would also have been published as a revised edition, even if the difference between the 2nd and 3rd edition is much less drastic than that between the 3rd and 4th edition.</p>
+
+  <h3>How about another example?</h3>
+  <p>As a young philosopher you published a book on democracy and now, much later, your views concerning democracy have changed a lot. Since the subject remains the same and the title of your earlier book can be made to work with some editing, you write a completely revised edition. Within the Book Versioning scheme this change of heart would be incorporated in the incrementation of the major version; old views would turn obsolete while also providing your readers a way to see how your thinking evolved. Publishing a new title that concerns the same topic does not encode this information, and the reader would have to read both books and assume the one published later corresponds to your current views.</p>
+
+  <h2>About</h2>
+  <p>The Book Versioning specification was developed by <a href="https://theboina.org/">The Boina Press</a>, a small Finnish literary press, and published in 2025.</p>
+  <p>Feedback is welcomed. Please use electronic mail and the address <a href="mailto:info@bookver.org">info@bookver.org</a>.</p>
+
+  <h2>Licence</h2>
+  <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</body>
+</html>
